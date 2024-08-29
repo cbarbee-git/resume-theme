@@ -41,12 +41,19 @@
             <?php while ( $child_query->have_posts() ) : $child_query->the_post(); ?>
                 <?php $reverse_class = ($count % 2 == 0) ? 'reverse' : ''; ?>
                 <div <?php post_class(); ?>>  
-                    
+                    <?php
+                    $child_post_ID = get_the_ID();
+                    if(get_field('show_divider_above_archives_list', $child_post_ID)){
+                        if(get_field('divider_headline_text', $child_post_ID)) {
+                            echo("<h5 class=\"sub-header\">".get_field('divider_headline_text', $child_post_ID)."</h5>");
+                        }
+                    }
+                    ?>
                     <h3 class="project_headline <?php echo($reverse_class); ?>"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
                     <div class="project_content <?php echo($reverse_class); ?>">
                         <?php  
                         if ( has_post_thumbnail() ) {
-                            $url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()), 'thumbnail' );
+                            $url = wp_get_attachment_url( get_post_thumbnail_id($child_post_ID), 'thumbnail' );
                             ?>
                             <a href="<?php the_permalink(); ?>">
                                 <img class="project_thumbnail" src="<?php echo($url); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" />
@@ -63,10 +70,6 @@
                 </div>
 
             <?php
-            if (($count) == $poject_count -1) {//check if this is the last one
-                echo("<h5 class=\"demo-projects\">Demo Projects</h5>");
-            }
-
             $count++;
             endwhile; 
             wp_reset_postdata();
