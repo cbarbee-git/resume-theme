@@ -39,7 +39,6 @@
             ?>
 
             <?php while ( $child_query->have_posts() ) : $child_query->the_post(); ?>
-                <?php //var_dump($child_query); die(); ?>
                 <?php $reverse_class = ($count % 2 == 0) ? 'reverse' : ''; ?>
                 <div <?php post_class(); ?>>  
                     
