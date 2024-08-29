@@ -1,0 +1,149 @@
+html, body {overflow-x: hidden;}
+body, input, select, textarea {
+    margin: 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    background-color: palette('white');
+    font-size: $body-font-size;
+    font-weight: 400;
+    line-height: 1.5;
+    color: palette('gray');
+}
+body {
+    max-width: 100%;
+    background-color: palette('black');
+    .main {
+        background-color: palette('white');
+    }
+}
+
+a {
+    text-decoration: none;
+    color: palette('green');
+}
+
+.row {
+    display: flex;
+    .col {
+        display: flex;
+    }
+}
+
+.fa {
+    color: palette('white');
+}
+
+#skills, #hp-slider, #callout{
+    position: relative;
+
+    &:before{
+        content: '';
+        background-color: palette('green');
+        height: 50px;
+        width: 2px;
+        position: absolute;
+        top: -25px;
+        left: 50%;
+    }
+}
+
+.big-button-container {
+    text-align: left;
+
+    a {
+        border: 2px solid palette('green');
+        padding: 20px 40px;
+        color: palette('white');
+        text-decoration: none;
+        font-weight: 900;
+        background: transparent;
+        text-transform: uppercase;
+        @include transition(background-color 700ms linear);
+
+        &:hover{
+            background-color: palette('green');
+            @include transition(background-color 700ms linear);
+
+        }
+
+    }
+}
+
+blockquote {
+    &.wp-block-quote{
+        border-left: none;
+        margin: 1.75em 0;
+        padding-left: 0;
+        
+        &:before, &:after{
+            font-family: FontAwesome;
+            color: palette('gold');
+            font-size: 34px;
+        }
+
+        &:before{
+            content: "\f10d";
+            top: -22px;
+            margin-right: -20px;
+            position: relative;
+
+        }
+        &:after{
+            content: "\f10e";
+            position: relative;
+            margin-left: -20px;
+            left: 100%;  
+            top: auto;
+            bottom: -20px;
+        }
+        &.styled {
+            background:
+            linear-gradient(to right, palette('gold') 4px, transparent 4px) 0 100%,
+            linear-gradient(to left, palette('gold') 4px, transparent 4px) 100% 0,
+            linear-gradient(to bottom, palette('gold') 4px, transparent 4px) 100% 0,
+            linear-gradient(to top, palette('gold') 4px, transparent 4px) 0 100%;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+        }
+        p{
+            padding: 0px 0;
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: -10px;
+            font-weight: 900;
+        }
+    }
+}
+
+#site-wrapper{
+div{
+    &.wpforms-container-full{
+         button[type=submit]{
+            background-color: palette('green') !important;
+            &:hover{
+                background-color: lighten(palette('green'),10%) !important;
+            }
+            &:focus{
+                &:after{
+                    border: 2px solid palette('green') !important;
+                }
+            }
+        }
+    }
+}
+}
+
+
+//touchscreens
+@media(hover: hover) and (pointer: fine) {
+
+    .big-button-container{
+        a {
+            background: transparent;
+            @include transition(background-color 100ms linear);
+            &:hover{
+                background-color: palette('green');
+            }
+        }
+    }
+
+}

@@ -1,0 +1,49 @@
+$body-font-size : 17px;
+$site-max-width : 1200px;
+
+
+ /**
+  * Colors are defined using the $palette map and accessed via the palette() function.
+  * For example, if you wanted to access the color blue, you would use palette('blue')
+  * Colors could be nested as well and accessed via palette( 'key', 'color' )
+  * The colors defined here will automagically create css ready classes for font and background colors
+  */
+ 
+  $palette: (
+    'black'     : #000000,
+    'black-lt'  : #1b1b1b,
+    'white'     : #ffffff,
+    'gray'      : #333333,
+    'gray-lt'   : #f3f3f3,
+    'gray-dk'   : #787878,
+    'red'       : #ff0000,
+    'orange'    : #ff6600,
+    'green'     : #008000,
+    'blue'      : #0050a1,
+    'yellow'    : #ffff00,
+    'gold'      : #ffd700,
+    'maroon'    : #7d1f2b,
+    'tan-dark'  : #685d48,
+    'tan-light' : #b5a77f,
+    'tan-bg'    : #f9f8f4,
+    'bronze'    : #c8593b,
+    'lang_cap'  : #ad4b48,
+    'db_cap'    : #929292,
+    'app_cap'   : #7a9105,
+);
+
+/**
+  * Breakpoints are used to specify when different screen styles are to take affect. Example Usage:
+  *
+  * @media ( max-width: $breakpoint-1 ) {
+  *    .class {
+  *        color: red;
+  *    }
+  * }
+  *
+  */
+ 
+  $breakpoint-1: 1024px;
+  $breakpoint-2: 768px;
+  $breakpoint-3: 640px;
+  $breakpoint-4: 480px;

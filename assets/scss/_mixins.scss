@@ -1,0 +1,399 @@
+@mixin clearfix() {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin prefix( $prefix, $arg ) {
+    -webkit-#{$prefix}: #{$arg};
+    -moz-#{$prefix}: #{$arg};
+    -ms-#{$prefix}: #{$arg};
+    -o-#{$prefix}: #{$arg};
+    #{$prefix}: #{$arg};
+}
+
+@mixin size( $width: 0, $height: 0 ) {
+    width: $width;
+    height: $height;
+}
+
+@mixin border-radius( $radius: 5px ) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin opacity( $opacity: 1 ) {
+    filter: unquote("alpha(opacity=#{$opacity * 100})");
+    -moz-opacity: #{$opacity};
+    -khtml-opacity: #{$opacity};
+    opacity: #{$opacity};
+}
+
+@mixin box-shadow( $box-shadow ) {
+    -webkit-box-shadow: $box-shadow;
+    -moz-box-shadow: $box-shadow;
+    box-shadow: $box-shadow;
+}
+
+@mixin text-shadow( $text-shadow ) {
+    text-shadow: $text-shadow;
+}
+
+@mixin vertical-gradient( $from: #000,$to: #FFF ) {
+    background: $from;
+    background: -webkit-gradient( linear, left top, left bottom, from( $from ), to( $to ) );
+    background: -webkit-linear-gradient( $from, $to );
+    background: -moz-linear-gradient( center top, $from 0%, $to 100% );
+    background: -moz-gradient( center top, $from 0%, $to 100% );
+}
+
+@mixin linear-gradient( $from: #000,$to: #FFF ) {
+    background: $from;
+    background: -webkit-linear-gradient( $from, $to );
+    background: -o-linear-gradient( right, $from 0%, $to 100% );
+    background: -moz-linear-gradient( right, $from 0%, $to 100% );
+    background: linear-gradient( to right, $from 0%, $to 100% );
+}
+
+@mixin radial-gradient( $innerColor: #555, $outerColor: #333 )  {
+  background-color: $outerColor;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+  background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
+  background-repeat: no-repeat;
+}
+
+@mixin scale( $ratio: 1 ){
+    -webkit-transform: scale( $ratio );
+    -moz-transform: scale( $ratio );
+    -ms-transform: scale( $ratio );
+    -o-transform: scale( $ratio );
+    transform: scale( $ratio );
+}
+
+@mixin box-sizing( $sizing: content-box ) {
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+    box-sizing: $sizing;
+}
+
+@mixin perspective( $perspective ) {
+    @include prefix( perspective, $perspective );
+}
+
+@mixin transition( $transition ) {
+    @include prefix( transition, $transition );
+}
+
+@mixin transform( $transform ) {
+    @include prefix( transform, $transform );
+}
+
+@mixin transform-origin( $origin ) {
+    @include prefix( transform-origin, $origin );
+}
+
+/**
+ * Vertical Align (VA) Middle SASS Mixins
+ *
+ * Example Usage:
+ *
+ * .va-container {
+ *      @include va-container();
+ *
+ *      .va-content {
+ *          @include va-content();
+ *      }
+ *  }
+ *
+ * <div class="va-container">
+ *     <div class="va-content">
+ *         <h6>Example Title</h6>
+ *         <p>Example Content</p>
+ *     </div>
+ * </div>
+ */
+@mixin va-container() {
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        overflow: hidden;
+        visibility: hidden;
+        width: 0;
+        height: 100%;
+        margin: 0 0 0 -5px;
+        padding: 0;
+        vertical-align: middle;
+    }
+}
+
+@mixin va-content( $padding: 0 ) {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: $padding;
+    width: 100%;
+    white-space: normal;
+    @include box-sizing(border-box);
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin animation( $animate... ) {
+    $max: length( $animate );
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth( $animate, $i )};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes( $animationName ) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+/* FLEX - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mixins
+-------------------------------------------------------------- */
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin inline-flex {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+@mixin flex($fg: 1, $fs: 1, $fb: auto) {
+
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so lets grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box: $fg-boxflex;
+  -moz-box: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+/**
+ * Values: row (default) | row-reverse | column | column-reverse
+ */
+@mixin flex-direction($value: row) {
+    @if $value == row-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: horizontal;
+        -moz-box-direction: reverse;
+        -moz-box-orient: horizontal;
+    } @else if $value == column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+    } @else if $value == column-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: reverse;
+        -moz-box-orient: vertical;
+    } @else {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -moz-box-direction: normal;
+        -moz-box-orient: horizontal;
+    }
+    -webkit-flex-direction: $value;
+    -ms-flex-direction: $value;
+    flex-direction: $value;
+}
+
+/**
+ * Values: nowrap (default) | wrap | wrap-reverse
+ */
+@mixin flex-wrap($value: nowrap) {
+    // No Webkit/FF Box fallback.
+    -webkit-flex-wrap: $value;
+
+    @if $value == nowrap {
+        -ms-flex-wrap: none;
+    } @else {
+        -ms-flex-wrap: $value;
+    }
+
+    flex-wrap: $value;
+}
+
+/**
+ * Values: row (default) | nowrap
+ */
+@mixin flex-flow($values: (row nowrap)) {
+    // No Webkit/FF Box fallback.
+    -webkit-flex-flow: $values;
+    -ms-flex-flow: $values;
+    flex-flow: $values;
+}
+
+/**
+ * Value: any integer (0 is the default)
+ */
+@mixin order($int: 0) {
+    -webkit-box-ordinal-group: $int + 1;
+    -moz-box-ordinal-group: $int + 1;
+    -webkit-order: $int;
+    -ms-flex-order: $int;
+    order: $int;
+}
+
+/**
+ * Value: any integer (0 is the default)
+ */
+@mixin flex-grow($int: 1) {
+    -webkit-box-flex: $int;
+    -moz-box-flex: $int;
+    -webkit-flex-grow: $int;
+    -ms-flex: $int;
+    flex-grow: $int;
+}
+
+/**
+ * Value: any integer (0 is the default)
+ */
+@mixin flex-shrink($int: 0) {
+    -webkit-flex-shrink: $int;
+    -moz-flex-shrink: $int;
+    -ms-flex: $int;
+    flex-shrink: $int;
+}
+
+@mixin flex-basis($value: auto) {
+    -webkit-flex-basis: $value;
+    flex-basis: $value;
+}
+
+/**
+ * Values: flex-start (default) | flex-end | center | space-between | space-around
+ *
+ * Note: space-* values not supported in older syntaxes.
+ */
+@mixin justify-content($value: flex-start) {
+    @if $value == flex-start {
+        -webkit-box-pack: start;
+        -moz-box-pack: start;
+        -ms-flex-pack: start;
+    } @else if $value == flex-end {
+        -webkit-box-pack: end;
+        -moz-box-pack: end;
+        -ms-flex-pack: end;
+    } @else if $value == space-between {
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+    } @else if $value == space-around {
+        -ms-flex-pack: distribute;
+    } @else {
+        -webkit-box-pack: $value;
+        -moz-box-pack: $value;
+        -ms-flex-pack: $value;
+    }
+    -webkit-justify-content: $value;
+    justify-content: $value;
+}
+
+/**
+ * Values: flex-start | flex-end | center | baseline | stretch (default)
+ */
+@mixin align-items($value: stretch) {
+    @if $value == flex-start {
+        -webkit-box-align: start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+    } @else if $value == flex-end {
+        -webkit-box-align: end;
+        -moz-box-align: end;
+        -ms-flex-align: end;
+    } @else {
+        -webkit-box-align: $value;
+        -moz-box-align: $value;
+        -ms-flex-align: $value;
+    }
+    -webkit-align-items: $value;
+    align-items: $value;
+}
+
+/**
+ * Values: auto (default) | flex-start | flex-end | center | baseline | stretch
+ */
+@mixin align-self($value: auto) {
+    // No Webkit Box Fallback.
+    -webkit-align-self: $value;
+
+    @if $value == flex-start {
+        -ms-flex-item-align: start;
+    } @else if $value == flex-end {
+        -ms-flex-item-align: end;
+    } @else {
+        -ms-flex-item-align: $value;
+    }
+
+    align-self: $value;
+}
+
+/**
+ * Values: flex-start | flex-end | center | space-between | space-around | stretch (default)
+ */
+
+@mixin align-content($value: stretch) {
+    // No Webkit Box Fallback.
+    -webkit-align-content: $value;
+
+    @if $value == flex-start {
+        -ms-flex-line-pack: start;
+    } @else if $value == flex-end {
+        -ms-flex-line-pack: end;
+    } @else {
+        -ms-flex-line-pack: $value;
+    }
+
+    align-content: $value;
+}

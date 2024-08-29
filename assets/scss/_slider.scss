@@ -1,0 +1,97 @@
+.embedded-slider {
+    max-width: 1260px;
+    margin: 50px 0;
+    width: 100%;
+    .slick-slider{
+        .slick-slide{
+            figcaption {
+                visibility: hidden;
+                padding: 10px 0;
+                color: palette('green');
+                font-weight: 600;
+                line-height: 150%;
+            }
+            &.slick-current{
+                figcaption {
+                    visibility: visible;
+                    transition: all 0.4s ease-in-out;
+                    text-align: center;
+                    //background-color: palette('green');
+                }
+            }
+        }
+        img {
+            max-width: 100%;
+            transition: all 0.4s ease-in-out;   
+        }
+
+        .slick-slide{
+            transform: scale(0.8);
+            transition: all 0.4s ease-in-out;
+            padding: 20px;
+        }
+        .slick-center{
+            transform: scale(1.1);
+            position: relative;
+            z-index: 2;
+            img{
+                border: 4px solid palette('green');
+                box-sizing: border-box;
+                border-radius: 15px;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    h2{
+        text-align: center;
+    }
+    
+
+    .slick-arrow{
+            border-radius: 20px;
+            height: 40px;
+            width: 40px;
+
+        .slick-next {
+            right: -60px;
+            text-indent: 0;
+        }
+        
+        .slick-prev {
+            left: -60px;
+            text-indent: 0;
+        }
+
+        &:before, &:after{
+            color: palette('gray-dk');
+        }
+        &:hover{
+            //background: rgba(0, 0, 0, 0.1);
+        }
+        &:before{
+            top: 9px;
+            font-size: 30px;
+        }
+    }
+    .slick-dots {
+        //bottom: 20px;
+
+        li {
+            &.slick-active{
+                button{
+                    //background-color: darken(palette('green'),25%);
+                    background-color: palette('green');
+                    transform: scale(1.25);
+                    transition: all 0.2s ease-in-out;
+                }
+            }
+            button {
+                height: 15px;
+                width: 15px;
+                background-color: lighten(palette('gray-dk'),25%);
+            }
+
+        }
+    }
+}

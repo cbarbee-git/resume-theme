@@ -1,0 +1,15 @@
+@function palette( $color, $variant:null ) {
+
+    @if ( $variant != null ) {
+        @return map-get( map-get( $palette, $color ), $variant );
+    } @else {
+        @return map-get( $palette, $color );
+    }
+}
+
+@function font-family( $font:null ) {
+
+    @if ( $font != null ) {
+        @return map-get( $fonts, $font );
+    }
+}

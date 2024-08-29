@@ -1,0 +1,110 @@
+#main-menu{
+    font-family: poppins, Sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: -.4px;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+
+    >a{
+        padding: 10px 0;
+    }
+
+    ul {
+        li{
+            &.mobile-only{
+                display:none;
+            }
+        }
+    }
+
+    .menu-item{
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        vertical-align: top;
+        margin-right: 38.4px;
+
+        >a {
+            text-decoration: none;
+            padding: 10px 0;
+            color: #fff;
+            background-color: transparent;
+
+            &.icon{
+                font-size: 1.4em;
+                i {
+                    margin-top: -10px;
+                }
+                &:hover{
+                    &:before{
+                        width: 20px;
+                    }
+                }
+            }
+
+            &:before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            @include transition(1000ms cubic-bezier(0.17, 0.67, 0, 1.01));
+            width: 0;
+            height: 2px;
+            background-color: palette('white');
+            }
+            &:hover{
+                &:before{
+                    width: 30px;
+                    background-color: palette('green');
+                }
+            }
+        }
+        .current-menu-item {
+            >a{
+                &:before {
+                    width: 30px;
+                    height: 2px;
+                    background-color: palette('green');
+                }
+            }
+        }
+            
+        /*> .sub-menu{
+            margin-top: 20px;
+            transition: opacity .4s, visibility .4s;
+            display: none;
+        }*/
+
+    /*&:hover{
+        > .sub-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+    }*/
+
+        /*>a {
+            
+        }
+        &.menu-item-has-children{
+            > a {
+                &:after{
+                    content: '\f107';
+                    font-size: 14px;
+                    font-family: FontAwesome;
+                    line-height: 1;
+                    margin-left: 5px;
+                }
+            }
+        }*/
+    }
+}
+.mobile-nav-expand-wrapper{
+    #nav-expand {
+        display: none;
+        color: palette('white');
+     }
+}
