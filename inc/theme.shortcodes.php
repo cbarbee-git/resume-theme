@@ -54,7 +54,7 @@ function _chad_display_carousel($atts) {
                 $output .= "\t\t<img src=\"" . $item['item_image'] . "\" alt=\"". $item_caption ."\" title=\"". $item_caption ."\" class=\"slide-image\" />\n";
             endif;
             if( $item_caption != '') :
-                $output .= "\t\t<figcaption>" . $item_caption . "</figcaption>\n";
+                $output .= "\t\t<figcaption data-url=\"".$item['item_page_link']."\">" . $item_caption . "</figcaption>\n";
             endif;
             $output .= "\t</figure>\n";
             $output .= "</div>\n";

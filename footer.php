@@ -36,5 +36,28 @@
         </footer>
     </div>
 <?php wp_footer(); ?>
+<?php  if ( is_front_page() ) : ?>
+    <script>
+        jQuery(document).ready( function($) {
+            $('.slide figure figcaption').on("mouseover", function(e) {
+                e.preventDefault();
+                const elm = e.currentTarget;
+                $(elm).css('text-decoration', 'underline');
+                console.log('here.');
+            });
+            $('.slide figure figcaption').on("mouseout", function(e) {
+                e.preventDefault();
+                const elm = e.currentTarget;
+                $(elm).css('text-decoration', 'none');
+                console.log('here.');
+            });
+            $('.slide figure figcaption').on("click", function(e) {
+                e.preventDefault();
+                const elm = e.currentTarget;
+                window.location.href = $(elm).attr('data-url');
+            });
+        });
+    </script>
+<?php endif; ?>
 </body>
 </html>
