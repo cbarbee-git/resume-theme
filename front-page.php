@@ -87,6 +87,9 @@
                         </span>
                 </div>
                 <h3 class="heading-title"><?php echo(get_field('carousel_headline',get_the_ID())); ?></h3>
+                <div class="widget-container">
+                    <h4 class="subheading-title"><?php echo(get_field('carousel_subhead',get_the_ID())); ?></h4>
+                </div>
             </section>
         </div>
         <div class="container">

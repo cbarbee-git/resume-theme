@@ -103,6 +103,13 @@ body.page{
                     line-height: 58px;
                     margin-top: 0;
                 }
+                .subheading-title {
+                    color: #2ba837;
+                    font-size: 17px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    line-height: 17px;
+                }
             }
 
             &#skills{
@@ -110,14 +117,6 @@ body.page{
                 width: 100%;
                 background-color: palette('white');
                 
-                .subheading-title {
-                    color: #2ba837;
-                    font-size: 17px;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    line-height: 17px;
-                    //letter-spacing: -1px;
-                }
 
                 .row {
                     width: 100%;
