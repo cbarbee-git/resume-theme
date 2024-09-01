@@ -30,7 +30,7 @@ function _chad_display_carousel($atts) {
 
     $output .= "<div class='embedded-slider'>\n";
     if(get_field('carousel_display_title',$atts["id"])){
-        $output .= "<h2>".get_the_title($atts["id"])."</h2>";
+        $output .= "<h2 class=\"slider-header\">".get_the_title($atts["id"])."</h2>";
     }
     $items = get_field('carousel_items',$atts["id"]);
 

@@ -80,6 +80,16 @@
 
     <section id="hp-slider">
         <div class="container">
+            <section class="inner-section">
+                <div class="divider">
+                        <span class="divider-separator">
+                            &nbsp;
+                        </span>
+                </div>
+                <h3 class="heading-title"><?php echo(get_field('carousel_headline',get_the_ID())); ?></h3>
+            </section>
+        </div>
+        <div class="container">
             <?php echo( do_shortcode(get_field('carousel_shortcode',get_the_ID())) ); ?>
         </div>
         <p class="full-portfolio"><a href="<?php echo(get_field('portfolio_page_link',get_the_ID())); ?>"><?php echo(get_field('portfolio_page_cta',get_the_ID())); ?> <?php echo(get_field('portfolio_cta_icon',get_the_ID())) ?></a></p>

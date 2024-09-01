@@ -94,11 +94,7 @@ body.page{
 
             }
 
-
-            &#skills{
-                min-height: 300px;
-                width: 100%;
-                background-color: palette('white');
+            &#skills,&#hp-slider{
                 .heading-title {
                     color: #101010;
                     font-family: poppins, Sans-serif;
@@ -107,6 +103,13 @@ body.page{
                     line-height: 58px;
                     margin-top: 0;
                 }
+            }
+
+            &#skills{
+                min-height: 300px;
+                width: 100%;
+                background-color: palette('white');
+                
                 .subheading-title {
                     color: #2ba837;
                     font-size: 17px;
@@ -190,6 +193,14 @@ body.page{
             &#hp-slider{
                 background-color: palette('white');
                 padding-bottom: 20px;
+
+                .heading-title{
+                    margin-bottom: 0;
+                }
+
+                .inner-section {
+                    padding: 70px 30px 0px 30px;
+                }
                 .embedded-slider {
                    margin-bottom: 0;
                 }
