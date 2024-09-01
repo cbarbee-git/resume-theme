@@ -16,7 +16,40 @@
             &.type-page{
                 margin: 0 2%;
             }
+        }
+        .page-headline {
+            color: palette('green');
+            position: relative;
+            margin-bottom: 8%;
+
+            &:before{
+            content: " ";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            margin: -10px 0px 0px -25px;
+            border-color: palette('green');
+            border-style: solid;
+            border-width: 2px 0 0 2px;
+            }
             
+            &:after{
+                content: " ";
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                margin: 15px 0px 0px -10px;
+                border-color: palette('green');
+                border-style: solid;
+                border-width: 0 2px 2px 0;
+            }
+        }
+
+        .headshot {
+            text-align: center;
+            img {
+                width:75%;
+            }
         }
         h5{
             &.sub-header {

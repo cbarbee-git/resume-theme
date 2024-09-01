@@ -246,6 +246,9 @@
                     }
                 }
             }
+            .headshot-row {
+                flex-direction: column-reverse;
+            }
         }
         &.error404{
             .error-page-msg-wrapper{
