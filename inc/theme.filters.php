@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+add_filter( 'option_use_smilies', '__return_false' );
+
 function new_excerpt_more($more) {
     return '... <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">Read More</a>';
 }
