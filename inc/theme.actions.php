@@ -69,4 +69,9 @@ function theme_settings() {
 add_action( 'init', 'theme_settings' );
 
 
+function add_google_analytics_ua_code() {
+    echo (get_field('google_analytics_code', 'option') );
+}
+add_action( 'wp_head', 'add_google_analytics_ua_code', 10 );
+
 ?>
